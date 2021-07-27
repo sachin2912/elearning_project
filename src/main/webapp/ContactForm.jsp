@@ -1,13 +1,15 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="ISO-8859-1">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <title>
-            Registration Form
-  </title>
-  <style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	  <title>
+	            Contact Form
+	  </title>
+	  <style>
         body{
             text-align: center;
             width: 100%;
@@ -28,19 +30,20 @@
         }
 
         
-    </style>
-</head>
- <body>
+    	</style>
+	</head>
+ 	<body>
  		<h1 style="padding: 15px;">
  			E-Learning Portal
- 	</h1>        <div class="heading">
+ 	</h1>
+        <div class="heading">
             <h2>
-                Registration Form
+                Contact Form
             </h2>
         </div>
         <div id="regform">
             <table>
-                <form method="post" action="UserRegistration">
+                <form method="post" action="AddContactDetails">
                     <tr>
                         <td>
                             <strong>
@@ -78,22 +81,10 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>
-                            <strong>
-                                <label>
-                                    Password
-                                </label>
-                            </strong>
-                        </td>
-                        <td>
-                            <input type="password" name="password" id="password" minlength="10" maxlength="100" required>
-                        </td>
-                    </tr>
-                    <tr>
                         <td>   
                             <strong>
                                 <label>
-                                    Phone
+                                    Phone Number
                                 </label>
                             </strong>
                         </td>
@@ -105,30 +96,19 @@
                             <td>
                                 <strong>
                                     <label>
-                                        Address
+                                        Message
                                     </label>
                                 </strong>
                             </td>
                             <td>
-                                <textarea  name="address" id="address" rows="4" cols="15" minlength="15" maxlength="100" required>
-                            	</textarea>
+                                <textarea name="message" id="message" rows="4" value="" cols="15"  required>
+                                </textarea>
                             </td>    
                     </tr>
-                    <tr>
-                        <td>
-                            <strong>
-                                <label>
-                                    Upload Photo
-                                </label>
-                            </strong>
-                        </td>
-                        <td>
-                            <input type="file" name="uploadPhoto" id="uploadPhoto"  required>
-                        </td>
-                    </tr>
+                   
                     <tr>
                         <td colspan="2">
-                            <input type="submit" value="Register" >
+                            <input type="submit" value="Submit" >
 
                         </td>
                     </tr>
