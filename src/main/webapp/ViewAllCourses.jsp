@@ -4,72 +4,68 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
 <link rel="stylesheet" href="Menu.css">
 <link rel="stylesheet" href="Table.css">
-
-<title>View All Feedback</title>
+<meta charset="ISO-8859-1">
+<title>All Courses</title>
 </head>
 <body>
-	<h1 style="padding: 15px;">
+<h1 style="padding: 15px;">
  			E-Learning Portal
  	</h1>
  	<div class="navbar">
   <a href="AdminLandingPage.jsp">Home</a>
   <a href="ViewAllUsers.jsp">Registered Users</a>
-  <a href="ViewAllCourses.jsp">Courses</a>
-  <a class="active" href="ViewAllFeedback.jsp">Feedback</a>
+  <a class="active" href="ViewAllCourses.jsp">Courses</a>
+  <a href="ViewAllFeedback.jsp">Feedback</a>
   <a href="ViewAllContact.jsp">Contact Requests</a>
   <a href="AddCourse.jsp">Add Course</a>
   
   
 </div>
-	<h2>Feedback by all Users</h2>
+	<h2>All Courses on Portal</h2>
     
     <div class="details">
         
         <table>
             <tr>
-            	<th>Feedback ID</th>
-                <th>User ID</th>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Feedback</th>
+            	<th>Course ID</th>
+                <th>Course Name</th>
+                <th>Descsription</th>
+                <th>Fees</th>
+                <th>Resource</th>
                 
             </tr>
-            <%! String name,email,feedback; %>
+            <%! String c_name,c_desc,c_resource,c_fees; %>
             <%! String url,user,pass; %>
-            <%! int feedbackID,userID; %>
+            <%! int courseID; %>
             <%
             url = "jdbc:mysql://localhost/e_learning";
         	user = "root";
         	pass = "root";
-        	//Cookie ck[] = request.getCookies();
-        	//for(int i=0;i<ck.length;i++){
-        	//	if(ck[i].getName().equals("id")) user_id = Integer.parseInt(ck[i].getValue());
-        	//}
+        	
         	try{
         		Class.forName("com.mysql.cj.jdbc.Driver");
         		Connection con = DriverManager.getConnection(url, user, pass);
-        		PreparedStatement pes = con.prepareStatement("SELECT f_id,user_id,name,email,feedback from feedback");
+        		PreparedStatement pes = con.prepareStatement("SELECT course_id,c_name,c_desp,c_fees,c_resource from course");
         		
         		ResultSet res = pes.executeQuery();
         		if(res.isBeforeFirst()){
         			//res.first();
         			while(res.next()){
-        				feedbackID = res.getInt("f_id");
-        				userID = res.getInt("user_id");
-        				name = res.getString("name");
-        				email = res.getString("email");
-        				feedback = res.getString("feedback");
+        				courseID = res.getInt("course_id"); 
+        				c_name = res.getString("c_name");
+        				 c_desc= res.getString("c_desp");
+        				c_fees= res.getString("c_fees");
+        				c_resource = res.getString("c_resource");
         				
     				%>
     				<tr>
-    					<td><%=feedbackID %></td>
-    					<td><%=userID %></td>
-    					<td><%=name %></td>
-    					<td><%=email %></td>
-    					<td><%=feedback %></td>
+    					<td><%=courseID %></td>
+    					<td><%=c_name %></td>
+    					<td><%=c_desc %></td>
+    					<td><%=c_fees %></td>
+    					<td><%=c_resource %></td>
     				</tr>
     				<%
         			}

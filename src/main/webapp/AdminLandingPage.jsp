@@ -48,12 +48,16 @@ body {font-family: Arial, Helvetica, sans-serif;}
  	</h1>
 	<div class="navbar">
   <a class="active" href="#">Home</a>
-  <a href="ViewAllCourses.jsp">View All Courses</a>
-  <a href="FeedbackForm.jsp">Give Feedback</a>
-  <a href="ContactForm.jsp">Request Contact</a>
-  <p> Welcome <% String value=(String)session.getAttribute("name");%>
-				<% out.print(value); %> </p>
+  <a href="ViewAllUsers.jsp">Registered Users</a>
+  <a href="ViewAllCourses.jsp">Courses</a>
+  <a href="ViewAllFeedback.jsp">Feedback</a>
+  <a href="ViewAllContact.jsp">Contact Requests</a>
+  <a href="AddCourse.jsp">Add Course</a>
+  
   
 </div>
+<p>
+E-learning enables users to learn and acquire new skills on demand , with there preferred timings.
+</p>
 </body>
 </html>

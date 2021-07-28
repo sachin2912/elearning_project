@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.Statement;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -48,9 +49,12 @@ public class AddFeedback extends HttpServlet {
 					if (conn != null)
 					{
 						Statement sm = conn.createStatement();
-						String sql_statement = "insert into feedback values("+userID+",'"+name+"','"+email+"','"+feedback+"')";
+						String sql_statement = "insert into feedback(user_id,name,email,feedback) values("+userID+",'"+name+"','"+email+"','"+feedback+"')";
 						sm.executeUpdate(sql_statement);
-						out.println("<h1>"+ name +"in contact form Inserted !!!!!!!</h1>");
+						out.println("<html><head><script>");
+						RequestDispatcher dispatcher = request.getRequestDispatcher("javascript/FeedbackSuccess.js");
+						dispatcher.include(request, response);
+						out.println("</script><title>Login Alert</title></head><body></body></html>");
 					}
 	    	  		
 				}

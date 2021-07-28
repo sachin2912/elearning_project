@@ -5,9 +5,10 @@ import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.Statement;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.Cookie;
+
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -49,9 +50,13 @@ public class AddContactDetails extends HttpServlet {
 					if (conn != null)
 					{
 						Statement sm = conn.createStatement();
-						String sql_statement = "insert into contact values("+userID+",'"+name+"','"+email+"','"+phoneNumber+"','"+message+"')";
+						String sql_statement = "insert into contact(user_id,name,email,phone_no,message) values("+userID+",'"+name+"','"+email+"','"+phoneNumber+"','"+message+"')";
 						sm.executeUpdate(sql_statement);
-						out.println("<h1>"+ name +"in contact form Inserted !!!!!!!</h1>");
+						
+						out.println("<html><head><script>");
+						RequestDispatcher dispatcher = request.getRequestDispatcher("javascript/ContactSuccess.js");
+						dispatcher.include(request, response);
+						out.println("</script><title>Login Alert</title></head><body></body></html>");
 					}
 	    	  		
 				}

@@ -5,27 +5,24 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<link rel="stylesheet" href="Menu.css">
+<link rel="stylesheet" href="Table.css">
 <title>View All Users</title>
-<style type="text/css">
- body{
-            text-align: center;
-            width: 100%;
-        }
-        table{
-            margin: auto;
-            text-align: center;
-            width: 50%;
-            
-        }
-        td {
-            padding: 15px;
-        }
-</style>
 </head>
 <body>
 <h1 style="padding: 15px;">
  			E-Learning Portal
  	</h1>
+ 	<div class="navbar">
+  <a href="AdminLandingPage.jsp">Home</a>
+  <a class="active" href="ViewAllUsers.jsp">Registered Users</a>
+  <a href="ViewAllCourses.jsp">Courses</a>
+  <a href="ViewAllFeedback.jsp">Feedback</a>
+  <a href="ViewAllContact.jsp">Contact Requests</a>
+  <a href="AddCourse.jsp">Add Course</a>
+  
+  
+</div>
 	<h2>All Users</h2>
     
     <div class="details">

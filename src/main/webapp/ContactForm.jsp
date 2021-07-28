@@ -9,38 +9,29 @@
 	  <title>
 	            Contact Form
 	  </title>
-	  <style>
-        body{
-            text-align: center;
-            width: 100%;
-        }
-        td {
-            padding: 15px;
-        }
-        #regform{
-            text-align: center;
-            width: 100%;
-            right: 200px;
-        }
-        table{
-            margin: auto;
-            text-align: center;
-            width: 50%;
-            
-        }
-
-        
-    	</style>
+	  <link rel="stylesheet" href="Menu.css">
+	<link rel="stylesheet" href="Table.css">
 	</head>
  	<body>
  		<h1 style="padding: 15px;">
  			E-Learning Portal
  	</h1>
+ 		<div class="navbar">
+  <a href="UserLandingPage.jsp">Home</a>
+  <a href="ViewAllCourses.jsp">View All Courses</a>
+  <a href="FeedbackForm.jsp">Give Feedback</a>
+  <a class="active" href="ContactForm.jsp">Request Contact</a>
+  
+</div>
         <div class="heading">
             <h2>
                 Contact Form
             </h2>
         </div>
+        <% String name=(String)session.getAttribute("name");
+   			String userID = (String)session.getAttribute("user_id");
+   			String email = (String)session.getAttribute("email");
+   			%>
         <div id="regform">
             <table>
                 <form method="post" action="AddContactDetails">
@@ -53,7 +44,7 @@
                             </strong>
                         </td>
                         <td>
-                            <input type="number" name="user_id" id="userID" required>
+                            <input type="number" name="user_id" id="userID" value="<% out.print(name); %>" readonly required>
                         </td>    
                     </tr>
                     <tr>   
@@ -65,7 +56,7 @@
                             </strong>
                         </td>
                         <td>
-                            <input type="text" name="name" id="name"  minlength="10" maxlength="100"  required>
+                            <input type="text" name="name" id="name"  minlength="10" maxlength="100"  value="<% out.print(name); %>" readonly required>
                         </td>
                     </tr>
                     <tr>
@@ -77,7 +68,7 @@
                             </strong>
                         </td>
                         <td>
-                            <input type="email" name="email" id="email" minlength="10" maxlength="100" required>
+                            <input type="email" name="email" id="email" value="<% out.print(email); %>" minlength="10" maxlength="100" required readonly>
                         </td>
                     </tr>
                     <tr>

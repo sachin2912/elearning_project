@@ -5,15 +5,15 @@ import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Statement;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import com.mysql.cj.protocol.Resultset;
 
 /**
  * Servlet implementation class LoginForm
@@ -30,13 +30,7 @@ public class LoginForm extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-	}
+	
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
@@ -48,6 +42,7 @@ public class LoginForm extends HttpServlet {
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		String userType = request.getParameter("logintype");
+		String userName,ID;
 		
 		Connection conn = null;
 
@@ -55,23 +50,35 @@ public class LoginForm extends HttpServlet {
 					conn = DBConn.getConnection();
 					if (conn != null)
 					{
-						
-						String sqlStatement = "select email,password from ";
+						String landingPage;
+						String sqlStatement = "select ";
 						if (userType.equals("ADMIN")) {
-							sqlStatement += "admin ";
+							sqlStatement += "admin_id,name,email,password from admin ";
+							landingPage = "AdminLandingPage.jsp";
 						}
 						else {
-							sqlStatement += "user1 ";
+							sqlStatement += "user_id,name,email,password from user1 ";
+							landingPage = "UserLandingPage.jsp";
 						}
 						sqlStatement += "where email='"+email+"' AND password='"+password+"';" ;
 						PreparedStatement ps = conn.prepareStatement(sqlStatement);
 						ResultSet rs = ps.executeQuery();
 						if (rs.next()) {
-							out.println("<h1> Login Successfull !!!!!!!</h1>");
+							//out.println("<h1> Login Successful !!!!!!!</h1>");
+							userName = rs.getString(2);
+							ID = rs.getString(1);
+							HttpSession session = request.getSession();
+							session.setAttribute("name",userName);
+							session.setAttribute("user_id", ID);
+							session.setAttribute("email", email);
+							request.getRequestDispatcher(landingPage).forward(request, response); 
 						}
 						
 						else {
-							out.println("<html><head><meta charset=\"ISO-8859-1\"><script language=\"text/javascript\"'> alert('Username or Password did not match \n Please Verify !!!!') </script></head></html>");
+							out.println("<html><head><script>");
+							RequestDispatcher dispatcher = request.getRequestDispatcher("javascript/LoginFailed.js");
+							dispatcher.include(request, response);
+							out.println("</script><title>Login Alert</title></head><body></body></html>");
 						}
 					}
 	    	  		
