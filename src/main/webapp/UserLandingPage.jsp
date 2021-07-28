@@ -48,12 +48,18 @@ body {font-family: Arial, Helvetica, sans-serif;}
  	</h1>
 	<div class="navbar">
   <a class="active" href="#">Home</a>
-  <a href="ViewAllCourses.jsp">View All Courses</a>
+  <a href="UserViewAllCourses.jsp">View All Courses</a>
   <a href="FeedbackForm.jsp">Give Feedback</a>
   <a href="ContactForm.jsp">Request Contact</a>
-  <p> Welcome <% String value=(String)session.getAttribute("name");%>
+  <a style="float: right;" href="LogOut.jsp">Log Out</a>
+  <p style="float: right;"> Welcome <% String value=(String)session.getAttribute("name");%>
 				<% out.print(value); %> </p>
-  
 </div>
+<p style="text-align: center; font-size: 30px;">
+E-learning enables users to learn and acquire new skills on demand , with there preferred timings.
+<br>
+<br>
+Welcome to User Home Page of ELearning Portal
+</p>
 </body>
 </html>

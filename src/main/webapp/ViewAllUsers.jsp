@@ -20,7 +20,9 @@
   <a href="ViewAllFeedback.jsp">Feedback</a>
   <a href="ViewAllContact.jsp">Contact Requests</a>
   <a href="AddCourse.jsp">Add Course</a>
-  
+  <a style="float: right;" href="LogOut.jsp">Log Out</a>
+  <p style="float: right;"> Welcome Admin: <% String value=(String)session.getAttribute("name");%>
+				<% out.print(value); %> </p>
   
 </div>
 	<h2>All Users</h2>

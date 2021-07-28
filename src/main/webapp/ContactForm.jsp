@@ -18,9 +18,12 @@
  	</h1>
  		<div class="navbar">
   <a href="UserLandingPage.jsp">Home</a>
-  <a href="ViewAllCourses.jsp">View All Courses</a>
+  <a href="UserViewAllCourses.jsp">View All Courses</a>
   <a href="FeedbackForm.jsp">Give Feedback</a>
   <a class="active" href="ContactForm.jsp">Request Contact</a>
+  <a style="float: right;" href="LogOut.jsp">Log Out</a>
+  <p style="float: right;"> Welcome <% String value=(String)session.getAttribute("name");%>
+				<% out.print(value); %> </p>
   
 </div>
         <div class="heading">
@@ -44,7 +47,7 @@
                             </strong>
                         </td>
                         <td>
-                            <input type="number" name="user_id" id="userID" value="<% out.print(name); %>" readonly required>
+                            <input type="number" name="user_id" id="userID" value="<% out.print(userID); %>" readonly required>
                         </td>    
                     </tr>
                     <tr>   

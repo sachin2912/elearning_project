@@ -14,16 +14,14 @@
  			E-Learning Portal
  	</h1>
  	<div class="navbar">
-  <a href="AdminLandingPage.jsp">Home</a>
-  <a href="ViewAllUsers.jsp">Registered Users</a>
-  <a class="active" href="ViewAllCourses.jsp">Courses</a>
-  <a href="ViewAllFeedback.jsp">Feedback</a>
-  <a href="ViewAllContact.jsp">Contact Requests</a>
-  <a href="AddCourse.jsp">Add Course</a>
+  <a href="UserLandingPage.jsp">Home</a>
+  <a class="active" href="UserViewAllCourses.jsp">View All Courses</a>
+  <a href="FeedbackForm.jsp">Give Feedback</a>
+  <a href="ContactForm.jsp">Request Contact</a>
   <a style="float: right;" href="LogOut.jsp">Log Out</a>
-  <a style="float: right;" href="LogOut.jsp">Log Out</a>
-  <p style="float: right;"> Welcome Admin: <% String value=(String)session.getAttribute("name");%>
-				<% out.print(value); %> </p>  
+  <p style="float: right;"> Welcome <% String value=(String)session.getAttribute("name");%>
+				<% out.print(value); %> </p>
+  
 </div>
 	<h2>All Courses on Portal</h2>
     
@@ -33,7 +31,7 @@
             <tr>
             	<th>Course ID</th>
                 <th>Course Name</th>
-                <th>Descsription</th>
+                <th>Description</th>
                 <th>Fees</th>
                 <th>Resource</th>
                 

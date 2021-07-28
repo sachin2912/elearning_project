@@ -16,9 +16,12 @@
  	</h1>
  	<div class="navbar">
   <a href="UserLandingPage.jsp">Home</a>
-  <a href="ViewAllCourses.jsp">View All Courses</a>
+  <a href="UserViewAllCourses.jsp">View All Courses</a>
   <a class="active" href="FeedbackForm.jsp">Give Feedback</a>
   <a href="ContactForm.jsp">Request Contact</a>
+  <a style="float: right;" href="LogOut.jsp">Log Out</a>
+  <p style="float: right;"> Welcome <% String value=(String)session.getAttribute("name");%>
+				<% out.print(value); %> </p>
   
 </div>
         <div class="heading">
