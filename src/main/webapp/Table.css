@@ -1,0 +1,14 @@
+@charset "ISO-8859-1";
+ body{
+            text-align: center;
+            width: 100%;
+        }
+        table{
+            margin: auto;
+            text-align: center;
+            width: 100%;
+            
+        }
+        td {
+            padding: 15px;
+        }
